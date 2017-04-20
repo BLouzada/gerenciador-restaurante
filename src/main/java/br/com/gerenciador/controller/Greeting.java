@@ -1,4 +1,4 @@
-package br.com.gerenciador;
+package br.com.gerenciador.controller;
 
 public class Greeting {
 
