@@ -1,23 +1,20 @@
 package br.com.gerenciador.entity;
 
-import br.com.gerenciador.model.Pedido;
+import br.com.gerenciador.model.Cliente;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Date;
 
 /**
  * Created by 201320336 on 20/04/2017.
  */
 @Entity
-public class ClienteEntity {
+public class PedidoEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     @Column
-    private String nome;
+    private Date horaEntrada;
     @Column
-    private Integer pontosFidelidade;
-    @OneToMany()
-    private List<PedidoEntity> pedidos;
-
+    private Date horaSaida;
 }
