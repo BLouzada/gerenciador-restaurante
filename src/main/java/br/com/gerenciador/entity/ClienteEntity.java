@@ -1,7 +1,5 @@
 package br.com.gerenciador.entity;
 
-import br.com.gerenciador.model.Pedido;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,7 +15,12 @@ public class ClienteEntity {
     private String nome;
     @Column
     private Integer pontosFidelidade;
-    @OneToMany()
-    private List<PedidoEntity> pedidos;
 
+    public String getNome() {
+        return nome;
+    }
+
+    public Integer getPontosFidelidade() {
+        return pontosFidelidade;
+    }
 }

@@ -1,7 +1,6 @@
 package br.com.gerenciador.repository;
 
 import br.com.gerenciador.entity.ClienteEntity;
-import br.com.gerenciador.model.Cliente;
 import org.springframework.data.repository.CrudRepository;
 
 /**

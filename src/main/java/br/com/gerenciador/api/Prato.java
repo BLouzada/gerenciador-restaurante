@@ -1,4 +1,4 @@
-package br.com.gerenciador.model;
+package br.com.gerenciador.api;
 
 import java.util.List;
 

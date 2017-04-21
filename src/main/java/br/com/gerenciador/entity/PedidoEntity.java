@@ -1,7 +1,5 @@
 package br.com.gerenciador.entity;
 
-import br.com.gerenciador.model.Cliente;
-
 import javax.persistence.*;
 import java.util.Date;
 
