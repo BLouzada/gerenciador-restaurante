@@ -2,12 +2,8 @@ package br.com.gerenciador.service;
 
 import br.com.gerenciador.api.Ingrediente;
 import br.com.gerenciador.converters.IngredienteEntityToIngrediente;
-import br.com.gerenciador.entity.IngredienteEntity;
-import br.com.gerenciador.entity.MedidaEntity;
 import br.com.gerenciador.repository.IngredienteRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 
 /**
  * Created by 201320336 on 20/04/2017.
@@ -15,17 +11,15 @@ import java.util.ArrayList;
 @Service
 public class IngredienteService {
 
-    private IngredienteRepository ingredienteRepository;
     private IngredienteEntityToIngrediente ingredienteEntityToIngrediente;
+    private IngredienteRepository ingredienteRepository;
 
-    public IngredienteService(IngredienteRepository ingredienteRepository, IngredienteEntityToIngrediente ingredienteEntityToIngrediente) {
-        this.ingredienteRepository = ingredienteRepository;
+    public IngredienteService(IngredienteEntityToIngrediente ingredienteEntityToIngrediente, IngredienteRepository ingredienteRepository) {
         this.ingredienteEntityToIngrediente = ingredienteEntityToIngrediente;
+        this.ingredienteRepository = ingredienteRepository;
     }
 
-    public Ingrediente get() {
-        IngredienteEntity i = new IngredienteEntity("Arroz",new ArrayList<MedidaEntity>());
-        ingredienteRepository.save(i);
-        return ingredienteEntityToIngrediente.convert(ingredienteRepository.findOne(1L));
+    public Ingrediente getById(Long id){
+        return ingredienteEntityToIngrediente.convert(ingredienteRepository.findOne(id));
     }
 }

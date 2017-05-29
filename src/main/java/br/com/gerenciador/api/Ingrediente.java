@@ -1,7 +1,5 @@
 package br.com.gerenciador.api;
 
-import br.com.gerenciador.entity.MedidaEntity;
-
 import java.util.List;
 
 /**
@@ -9,20 +7,44 @@ import java.util.List;
  */
 public class Ingrediente {
 
+    private Long id;
     private String nome;
+    private Double vlr_compra;
+    private Double vlr_venda;
 
-    private List<Medida> medidas;
+    public Ingrediente setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
-    public Ingrediente(String nome, List<Medida> medidas) {
+    public Ingrediente setNome(String nome) {
         this.nome = nome;
-        this.medidas = medidas;
+        return this;
+    }
+
+    public Ingrediente setVlr_compra(Double vlr_compra) {
+        this.vlr_compra = vlr_compra;
+        return this;
+    }
+
+    public Ingrediente setVlr_venda(Double vlr_venda) {
+        this.vlr_venda = vlr_venda;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public List<Medida> getMedidas() {
-        return medidas;
+    public Double getVlr_compra() {
+        return vlr_compra;
+    }
+
+    public Double getVlr_venda() {
+        return vlr_venda;
     }
 }
