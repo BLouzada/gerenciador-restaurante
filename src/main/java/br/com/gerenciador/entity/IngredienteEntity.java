@@ -10,27 +10,13 @@ import java.util.List;
  */
 @Entity
 public class IngredienteEntity {
+	
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="INGREDIENTE_ID")
     private Long id;
 
     @Column
     private String nome;
-
-    @OneToMany()
-    private List<MedidaEntity> medidasEntities;
-
-    public IngredienteEntity(String nome, List<MedidaEntity> medidasEntities) {
-        this.nome = nome;
-        this.medidasEntities = medidasEntities;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public List<MedidaEntity> getMedidasEntities() {
-        return medidasEntities;
-    }
-
+    
 }
