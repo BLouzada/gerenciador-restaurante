@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 @RestController
 public class IngredienteController {
 
@@ -17,8 +20,13 @@ public class IngredienteController {
         this.ingredienteService = ingredienteService;
     }
 
-    @RequestMapping("/ingrediente/{id}")
+    @RequestMapping("/ingredientes/{id}")
     public Ingrediente get(@PathVariable("id") Long id) {
         return ingredienteService.getById(id);
+    }
+
+    @RequestMapping("/ingredientes")
+    public ArrayList<Ingrediente> getAll() {
+        return ingredienteService.getAll();
     }
 }
