@@ -16,12 +16,20 @@ public class IngredienteEntityToIngrediente implements Converter<IngredienteEnti
 
     @Override
     public Ingrediente convert(IngredienteEntity source) {
+        Long id = source.getId();
+        if(id != null){
+            return new Ingrediente()
+                    .setId(id)
+                    .setNome(source.getNome())
+                    .setVlr_compra(source.getVlr_compra())
+                    .setVlr_venda(source.getVlr_venda());
+        }else{
+            return new Ingrediente()
+                    .setNome(source.getNome())
+                    .setVlr_compra(source.getVlr_compra())
+                    .setVlr_venda(source.getVlr_venda());
+        }
 
-        return new Ingrediente()
-                .setId(source.getId())
-                .setNome(source.getNome())
-                .setVlr_compra(source.getVlr_compra())
-                .setVlr_venda(source.getVlr_venda());
 
     }
 }

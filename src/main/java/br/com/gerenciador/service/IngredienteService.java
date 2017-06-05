@@ -2,11 +2,12 @@ package br.com.gerenciador.service;
 
 import br.com.gerenciador.api.Ingrediente;
 import br.com.gerenciador.converters.IngredienteEntityToIngrediente;
+import br.com.gerenciador.converters.IngredienteToIngredienteEntity;
 import br.com.gerenciador.entity.IngredienteEntity;
 import br.com.gerenciador.repository.IngredienteRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -16,10 +17,12 @@ import java.util.ArrayList;
 public class IngredienteService {
 
     private IngredienteEntityToIngrediente ingredienteEntityToIngrediente;
+    private IngredienteToIngredienteEntity ingredienteToIngredienteEntity;
     private IngredienteRepository ingredienteRepository;
 
-    public IngredienteService(IngredienteEntityToIngrediente ingredienteEntityToIngrediente, IngredienteRepository ingredienteRepository) {
+    public IngredienteService(IngredienteEntityToIngrediente ingredienteEntityToIngrediente, IngredienteToIngredienteEntity ingredienteToIngredienteEntity, IngredienteRepository ingredienteRepository) {
         this.ingredienteEntityToIngrediente = ingredienteEntityToIngrediente;
+        this.ingredienteToIngredienteEntity = ingredienteToIngredienteEntity;
         this.ingredienteRepository = ingredienteRepository;
     }
 
@@ -33,5 +36,24 @@ public class IngredienteService {
             ingredientes.add(ingredienteEntityToIngrediente.convert(ingredienteEntity));
         }
         return ingredientes;
+    }
+
+    public HttpStatus save(Ingrediente ingrediente) {
+        ingredienteRepository.save(ingredienteToIngredienteEntity.convert(ingrediente));
+        return HttpStatus.ACCEPTED;
+    }
+
+    public HttpStatus update(Long id, Ingrediente ingrediente) {
+        IngredienteEntity ingredienteEntity = ingredienteRepository.findOne(id);
+        ingredienteEntity.setNome(ingrediente.getNome());
+        ingredienteEntity.setVlr_compra(ingrediente.getVlr_compra());
+        ingredienteEntity.setVlr_venda(ingrediente.getVlr_venda());
+        ingredienteRepository.save(ingredienteEntity);
+        return HttpStatus.ACCEPTED;
+    }
+
+    public HttpStatus remover(Long id) {
+        ingredienteRepository.delete(id);
+        return HttpStatus.ACCEPTED;
     }
 }
