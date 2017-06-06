@@ -5,6 +5,7 @@ import br.com.gerenciador.beans.Ingrediente;
 import br.com.gerenciador.service.IngredienteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -32,11 +33,6 @@ public class IngredienteController {
         return "ingredientes";
 
 
-    }
-
-    @RequestMapping("/ingredientes/{id}")
-    public @ResponseBody Ingrediente get(@PathVariable("id") Long id) {
-        return ingredienteService.getById(id);
     }
 
     @RequestMapping(value = "/ingredientes",method = RequestMethod.POST)
