@@ -28,8 +28,13 @@ public class IngredienteController {
     }
 
     @RequestMapping("/ingredientes")
-    public @ResponseBody ArrayList<Ingrediente> getAll() {
-           return ingredienteService.getAll();
+    public  String getAll(Model model) {
+        Ingrediente ingrediente1 = ingredienteService.getById(1L);
+        model.addAttribute("ingredienteSelecionado", ingrediente1);
+        ArrayList <Ingrediente> ingredientes = ingredienteService.getAll();
+        model.addAttribute("ingredientes", ingredientes);
+        return "ingredientes";
+
 
     }
     @RequestMapping(value = "/greeting" , method = RequestMethod.GET)
