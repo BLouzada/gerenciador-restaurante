@@ -1,6 +1,6 @@
 package br.com.gerenciador.service;
 
-import br.com.gerenciador.api.Ingrediente;
+import br.com.gerenciador.beans.Ingrediente;
 import br.com.gerenciador.converters.IngredienteEntityToIngrediente;
 import br.com.gerenciador.converters.IngredienteToIngredienteEntity;
 import br.com.gerenciador.entity.IngredienteEntity;

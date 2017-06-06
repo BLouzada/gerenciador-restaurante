@@ -1,6 +1,4 @@
-package br.com.gerenciador.api;
-
-import java.util.List;
+package br.com.gerenciador.beans;
 
 /**
  * Created by blouz on 07/05/2017.
