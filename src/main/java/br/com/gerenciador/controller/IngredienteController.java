@@ -25,12 +25,12 @@ public class IngredienteController {
     }
 
     @RequestMapping("/ingredientes")
-    public  String getAll(Model model) {
-        Ingrediente ingrediente1 = ingredienteService.getById(1L);
-        model.addAttribute("ingredienteSelecionado", ingrediente1);
-        ArrayList <Ingrediente> ingredientes = ingredienteService.getAll();
-        model.addAttribute("ingredientes", ingredientes);
-        return "ingredientes";
+        public  String getAll(Model model) {
+            Ingrediente ingrediente1 = ingredienteService.getById(1L);
+            model.addAttribute("ingredienteSelecionado", ingrediente1);
+            ArrayList <Ingrediente> ingredientes = ingredienteService.getAll();
+            model.addAttribute("ingredientes", ingredientes);
+            return "ingredientes";
 
 
     }

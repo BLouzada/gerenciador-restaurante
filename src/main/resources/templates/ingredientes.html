@@ -1,27 +1,33 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
 <form action="#" th:action="@{/ingredientes}" th:object="${ingredienteSelecionado}" method="post">
-    <input type="text" th:field="*{id}" readonly="readonly"/>
-    <br/>
+    Identificador: <input type="text" th:field="*{id}" readonly="readonly"/><br/>
+    Nome: <input type="text" th:field="*{nome}"/><br/>
+    Valor Compra: <input type="text" th:field="*{vlr_compra}"/><br/>
+    Valor Venda:<input type="text" th:field="*{vlr_venda}"/><br/>
     <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 </form>
-<table>
+<table border="2px solid black">
     <tr>
         <th>ID</th>
         <th>Nome</th>
         <th>Valor Compra</th>
         <th>Valor Venda</th>
+        <th></th>
+        <th></th>
     </tr>
     <tr th:each="ingrediente : ${ingredientes}">
         <td th:text="${ingrediente.id}"></td>
         <td th:text="${ingrediente.nome}"></td>
         <td th:text="${ingrediente.vlr_compra}"></td>
         <td th:text="${ingrediente.vlr_venda}"></td>
+        <td><a th:href="@{'/ingredientes/' + ${ingrediente.id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+        <td><a th:href="${ingrediente.id}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
     </tr>
 
 </table>
