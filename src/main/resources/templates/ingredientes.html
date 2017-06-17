@@ -5,13 +5,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<form action="#" th:action="@{/ingredientes}" th:object="${ingredienteSelecionado}" method="post">
-    Identificador: <input type="text" th:field="*{id}" readonly="readonly"/><br/>
+<form th:action="@{/ingredientes}" th:object="${post}" method="post">
     Nome: <input type="text" th:field="*{nome}"/><br/>
     Valor Compra: <input type="text" th:field="*{vlr_compra}"/><br/>
     Valor Venda:<input type="text" th:field="*{vlr_venda}"/><br/>
     <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 </form>
+
 <table border="2px solid black">
     <tr>
         <th>ID</th>
@@ -26,8 +26,11 @@
         <td th:text="${ingrediente.nome}"></td>
         <td th:text="${ingrediente.vlr_compra}"></td>
         <td th:text="${ingrediente.vlr_venda}"></td>
-        <td><a th:href="@{'/ingredientes/' + ${ingrediente.id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-        <td><a th:href="${ingrediente.id}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+        <td><a th:href="@{'/ingredientes/' + ${ingrediente.id}}"><button><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a></td>
+        <td><form th:action="@{'/ingredientes/{id}'(id=${ingrediente.id})}" th:method="delete" >
+            <input type="hidden" name="_method" value="delete" />
+            <button><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </form></td>
     </tr>
 
 </table>
