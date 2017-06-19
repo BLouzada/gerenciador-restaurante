@@ -13,28 +13,28 @@ import java.util.ArrayList;
  * Created by 201320336 on 20/04/2017.
  */
 @Component
-public class GrupoEntityToGrupo implements Converter<GrupoEntity,Grupo> {
+public class GrupoToGrupoEntity implements Converter<Grupo,GrupoEntity> {
 
-    private IngredienteEntityToIngrediente ingredienteEntityToIngrediente;
+    private IngredienteToIngredienteEntity ingredienteEntityToIngrediente;
 
-    public GrupoEntityToGrupo(IngredienteEntityToIngrediente ingredienteEntityToIngrediente) {
+    public GrupoToGrupoEntity(IngredienteToIngredienteEntity ingredienteEntityToIngrediente) {
         this.ingredienteEntityToIngrediente = ingredienteEntityToIngrediente;
     }
 
     @Override
-    public Grupo convert(GrupoEntity source) {
+    public GrupoEntity convert(Grupo source) {
         Long id = source.getId();
-        ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
-        for (IngredienteEntity ingrediente : source.getIngredientes()){
+        ArrayList<IngredienteEntity> ingredientes = new ArrayList<IngredienteEntity>();
+        for (Ingrediente ingrediente : source.getIngredientes()){
             ingredientes.add(ingredienteEntityToIngrediente.convert(ingrediente));
         }
         if(id != null){
-            return new Grupo()
+            return new GrupoEntity()
                     .setId(id)
                     .setNome(source.getNome())
                     .setIngredientes(ingredientes);
         }else{
-            return new Grupo()
+            return new GrupoEntity()
                     .setNome(source.getNome())
                     .setIngredientes(ingredientes);
         }
