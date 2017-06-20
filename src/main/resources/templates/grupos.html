@@ -5,14 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<form action="#" th:action="@{/grupos}" th:object="${grupoSelecionado}" method="post">
-    Identificador: <input type="text" th:field="*{id}" readonly="readonly"/><br/>
-    Nome: <input type="text" th:field="*{nome}"/><br/>
-    Ingredientes <select multiple>
-    <tr th:each="ingrediente : ${grupoSelecionado.ingredientes}">
-        <option th:value="${ingrediente.id}"/>
-
-</select>
+<form th:action="@{/grupos}" th:object="${novoGrupo}" method="post">
+    Nome: <input type="text" th:field="${novoGrupo.nome}"/><br/>
+    Ingredientes
+    <select th:field="${novoGrupo.ingredientes}" multiple="multiple" id="ingredientes" name="ingredientes[]">
+        <option th:each="i: ${ingredientes}" th:value="${i}" th:text="${i.nome}"></option>
+    </select><br/>
     <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 </form>
 <table border="2px solid black">
@@ -23,7 +21,7 @@
         <th></th>
     </tr>
     <tr th:each="grupo : ${grupos}">
-        <td th:text="${grupp.id}"></td>
+        <td th:text="${grupo.id}"></td>
         <td th:text="${grupo.nome}"></td>
         <td><a th:href="@{'/grupos/' + ${grupo.id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
         <td><a th:href="${grupo.id}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
@@ -31,3 +29,4 @@
 
 </table>
 </body>
+</html>

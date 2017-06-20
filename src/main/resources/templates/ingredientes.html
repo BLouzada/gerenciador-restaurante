@@ -5,10 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<form th:action="@{/ingredientes}" th:object="${post}" method="post">
-    Nome: <input type="text" th:field="*{nome}"/><br/>
-    Valor Compra: <input type="text" th:field="*{vlr_compra}"/><br/>
-    Valor Venda:<input type="text" th:field="*{vlr_venda}"/><br/>
+<form th:action="@{/ingredientes}" th:object="${novoIngrediente}" method="post">
+    Nome: <input type="text" th:field="${novoIngrediente.nome}"/><br/>
+    Valor Compra: <input type="number" th:field="${novoIngrediente.vlr_compra}"/><br/>
+    Valor Venda:<input type="number" th:field="${novoIngrediente.vlr_venda}"/><br/>
     <input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 </form>
 

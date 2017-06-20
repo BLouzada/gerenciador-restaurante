@@ -57,7 +57,7 @@ public class IngredienteController {
     }
     private String mostrarTodosIngredientes(Model model){
         ArrayList <Ingrediente> ingredientes = ingredienteService.getAll();
-        model.addAttribute("post", new Ingrediente());
+        model.addAttribute("novoIngrediente", new Ingrediente());
         model.addAttribute("ingredientes", ingredientes);
         return "ingredientes";
     }
